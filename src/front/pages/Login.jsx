@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+export const Login = () => {
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -11,7 +11,7 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch('https://sturdy-disco-wr5grwv4vqww3g4r5-3001.app.github.dev/api/login', {
+      const response = await fetch('https://opulent-fiesta-pjwpjx767vw5296wj-3001.app.github.dev/api/login', {
         method: 'POST',
         headers: {
          'Content-Type': 'application/json',
@@ -21,7 +21,7 @@ const Login = () => {
       const data = await response.json();
       if (response.ok) {
         setMessage('Inicio de sesión exitoso');
-        localStorage.setItem('access_token', data.access_token);
+        localStorage.setItem('token', data.token);
         navigate('/private'); 
       } else {
         setMessage(data.msg || 'Error al iniciar sesión');
@@ -61,4 +61,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+

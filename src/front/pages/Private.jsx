@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Private = () => {
+export const Private = () => {
   const [data, setData] = useState(null);
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
-
   useEffect(() => {
     const fetchData = async () => {
-      const token = localStorage.getItem('access_token');
+      const token = localStorage.getItem('token');
       if (!token) {
         navigate('/login');
         return;
       }
 
       try {
-        const response = await fetch('https://sturdy-disco-wr5grwv4vqww3g4r5-3001.app.github.dev/api/private', {
+        const response = await fetch('https://opulent-fiesta-pjwpjx767vw5296wj-3001.app.github.dev/api/private', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -41,8 +40,8 @@ const Private = () => {
       <h2>Página Privada</h2>
       {data && <p>{data.message}</p>}
       {message && <p>{message}</p>}
+      {data && <p>{data.user.email}</p>}
     </div>
   );
 };
 
-export default Private;

@@ -32,7 +32,7 @@ def handle_hello():
 @jwt_required()
 def get_user():
     current_user_id = int(get_jwt_identity())
-    user = db.session.execute(select(User).where(User.id == user_id)).scalar_one_or_none()
+    user = db.session.execute(select(User).where(User.id == current_user_id)).scalar_one_or_none()
     if user is None:
         return jsonify({"msg": "Usuario no encontrado"}), 404
     return jsonify({

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Signup = () => {
+export const Signup = () => {
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -11,7 +11,7 @@ const Signup = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch('https://sturdy-disco-wr5grwv4vqww3g4r5-3001.app.github.dev/api/signup', {
+      const response = await fetch('https://opulent-fiesta-pjwpjx767vw5296wj-3001.app.github.dev/api/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -59,4 +59,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+
